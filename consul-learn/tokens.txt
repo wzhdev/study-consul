@@ -1,3 +1,5 @@
+
+consul.wzh
 AccessorID:       434ad5fe-ad36-fb68-e91c-dbad9200c8ec
 SecretID:         6d7b2eb7-2afe-e012-9e22-41702a44e88b
 Description:      Bootstrap Token (Global Management)
@@ -6,60 +8,24 @@ Create Time:      2019-06-02 17:09:33.599811613 +0800 CST
 Policies:
    00000000-0000-0000-0000-000000000001 - global-management
    
+export CONSUL_HTTP_TOKEN=6d7b2eb7-2afe-e012-9e22-41702a44e88b
+export CONSUL_HTTP_ADDR=https://localhost:8501
+export CONSUL_CACERT=/home/wzhdev/consul/consul-agent-ca.pem
+export CONSUL_CLIENT_CERT=/home/wzhdev/consul/dc1-cli-consul-0.pem 
+export CONSUL_CLIENT_KEY=/home/wzhdev/consul/dc1-cli-consul-0-key.pem
    
-AccessorID:       61b43206-8218-0e1c-ddf7-cdad70fadb5b
-SecretID:         f6c17e10-b565-a83b-9dfc-4a6729730ec8
-Description:      server1 agent token
+consul.sfw
+AccessorID:       50dcfeb3-aeda-c662-2744-c6d09e72550d
+SecretID:         4e3033ec-d1aa-8a1e-61ee-ac733b30b62b
+Description:      Bootstrap Token (Global Management)
 Local:            false
-Create Time:      2019-06-02 17:13:59.362909361 +0800 CST
+Create Time:      2019-06-03 22:45:27.281002382 +0800 CST
 Policies:
-   e7e11045-665f-acd9-8d9e-ca26b51546e6 - server1
+   00000000-0000-0000-0000-000000000001 - global-management
    
-AccessorID:       48873674-ef81-7604-3655-0db9aafa0b50
-SecretID:         932e910a-0583-ca72-8d04-8ea7d5af598f
-Description:      server2 agent token
-Local:            false
-Create Time:      2019-06-02 17:18:37.277954752 +0800 CST
-Policies:
-   5f0b704c-0f9e-c43f-b11e-e5881f5d5d52 - server2
    
-AccessorID:       55648324-2443-8797-9ee8-8be90f410c0b
-SecretID:         bdb8b9c1-4617-5ecd-20be-661431d401b3
-Description:      server3 agent token
-Local:            false
-Create Time:      2019-06-02 17:18:51.009638793 +0800 CST
-Policies:
-   7c3e0632-7162-a938-4455-b844bab6d17f - server3
-   
-AccessorID:       243393bf-7367-5ea7-169d-ee1c95533114
-SecretID:         d17784ce-c197-0383-2649-d7b71f3071a8
-Description:      client4 agent token
-Local:            false
-Create Time:      2019-06-02 18:02:55.634519248 +0800 CST
-Policies:
-   e54e53d2-1a50-c94c-5ef0-3919f5840b86 - client4
-   
-AccessorID:       737f5df4-ba26-baf0-0987-dcbb294f8185
-SecretID:         219f6274-87c1-f085-6b46-b24c36d40daa
-Description:      client5 agent token
-Local:            false
-Create Time:      2019-06-02 18:03:14.592019657 +0800 CST
-Policies:
-   e8fd4a5d-912e-b522-d6c8-ed8eb4632076 - client5
-   
-AccessorID:       0e06a4ea-c45d-362c-2fb9-d7c12310bccf
-SecretID:         0f58688b-74fe-2f3b-064d-be623c768fc6
-Description:      Token for Client4 Default
-Local:            false
-Create Time:      2019-06-02 18:34:14.026826538 +0800 CST
-Policies:
-   375eb9b1-8602-9818-341d-38dac3f9d501 - dns-requests
-   
-AccessorID:       67642bfe-a63c-eeaa-e7a7-602662e9e784
-SecretID:         15caacc7-33f1-ea1c-c117-b5524b58147f
-Description:      Token for Client5 Default
-Local:            false
-Create Time:      2019-06-02 18:33:52.180045866 +0800 CST
-Policies:
-   375eb9b1-8602-9818-341d-38dac3f9d501 - dns-requests
-   0ac0c715-2e1a-ae99-fb42-4d291022371a - book-detail-service
+export CONSUL_HTTP_TOKEN=4e3033ec-d1aa-8a1e-61ee-ac733b30b62b
+export CONSUL_HTTP_ADDR=https://localhost:8501
+export CONSUL_CACERT=/home/wzhdev/consul/consul-agent-ca.pem
+export CONSUL_CLIENT_CERT=/home/wzhdev/consul/dc2-cli-consul-0.pem 
+export CONSUL_CLIENT_KEY=/home/wzhdev/consul/dc2-cli-consul-0-key.pem
