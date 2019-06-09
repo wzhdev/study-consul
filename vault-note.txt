@@ -1,0 +1,44 @@
+vault write database/config/book-detail-service \
+    plugin_name=mysql-database-plugin \
+    connection_url="{{username}}:{{password}}@tcp(192.168.1.121:3306)/" \
+    allowed_roles="book-detail-service" \
+    username="book-detail-service" \
+    password="123456"
+	
+vault write database/roles/book-detail-service \
+    db_name=book-detail-service \
+    creation_statements="CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT ALL PRIVILEGES ON book_detail_service.* TO '{{name}}'@'%';" \
+    default_ttl="1h" \
+    max_ttl="24h"
+	
+	
+vault write database/roles/my-role \
+    db_name=my-mysql-database \
+    creation_statements="SET PASSWORD FOR 'wzh'@'%'=PASSWORD('{{password}}');" \
+    default_ttl="1h" \
+    max_ttl="24h"
+	
+	
+	
+CREATE USER 'book-detail-service'@'%' IDENTIFIED BY '123456';
+
+CREATE USER 'bookstore-1'@'%' IDENTIFIED BY '123456';
+
+GRANT ALL PRIVILEGES ON book_detail_service.* TO 'book-detail-service' WITH GRANT OPTION;
+
+GRANT CREATE USER ON *.*  TO 'book-detail-service';
+
+SET PASSWORD FOR 'root'@'localhost' = PASSWORD('123456');
+
+
+
+87ff649b-af9e-b02b-4a76-40bf01303550
+
+vault write consul/config/access \
+    address=127.0.0.1:8500 \
+    token=87ff649b-af9e-b02b-4a76-40bf01303550
+	
+vault write consul/roles/book-detail-service policies=book-detail-service
+
+
+ISBN唯一性

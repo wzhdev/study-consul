@@ -29,3 +29,40 @@ export CONSUL_HTTP_ADDR=https://localhost:8501
 export CONSUL_CACERT=/home/wzhdev/consul/consul-agent-ca.pem
 export CONSUL_CLIENT_CERT=/home/wzhdev/consul/dc2-cli-consul-0.pem 
 export CONSUL_CLIENT_KEY=/home/wzhdev/consul/dc2-cli-consul-0-key.pem
+
+
+
+Unseal Key 1: XOMnxzFO6TJQBY2mm9QTKBUosKKsAcmmdmIe6rUEnzmJ
+Unseal Key 2: 5f1wtegZ8EhJh6cV00rmqJmJUCw+V7T2BfZDiDRjVZKF
+Unseal Key 3: 0FmJfEEzQWVtwjesCBMFgtCXiI/34RL1Lvtq4Z6uHtQN
+Unseal Key 4: /ScFESm4aUXa/sYfBdO48/YjtXZ9dyZ8Wn8CY7xBhGfB
+Unseal Key 5: mVLmH8N0kq2YmEUvWTPOKG5KkXXUkVUnkEjDJHFqTXrV
+
+Initial Root Token: s.P5ptrH9aFMojzFd6OLTogwhy
+
+
+
+export VAULT_CACERT=/home/wzhdev/vault/consul-agent-ca.pem
+
+
+
+
+
+docker run -p 9090:9090 -d --name prometheus \
+  -v /home/wzhdev/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml \
+  prom/prometheus
+
+docker run -d -p 9107:9107 --name consul-exporter \
+  -e CONSUL_HTTP_TOKEN=6d7b2eb7-2afe-e012-9e22-41702a44e88b  \
+  prom/consul-exporter --consul.server=192.168.1.125:8500
+
+docker run -d  -p 3000:3000  --name=grafana \
+  -e "GF_SERVER_ROOT_URL=http://192.168.1.121:3000" \
+  -e "GF_SECURITY_ADMIN_PASSWORD=123456" \
+  grafana/grafana
+
+  
+  
+curl \
+    --header "X-Consul-Token: 6d7b2eb7-2afe-e012-9e22-41702a44e88b" \
+    http://127.0.0.1:8500/v1/agent/metrics
